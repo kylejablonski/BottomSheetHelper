@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BottomSheetHelper</string>
+
+    <string name="share_to">Share to&#8230;</string>
+
+    <string name="okay">Okay</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="permission_read_and_write_storage_title">Read &amp; Write Storage</string>
+    <string name="permission_read_and_write_storage_message">This app requires permission to read and write external storage to share a file.</string>
+    <string name="file_permission_toast">Unable to share the image without granting permission to read and write external storage</string>
+</resources>

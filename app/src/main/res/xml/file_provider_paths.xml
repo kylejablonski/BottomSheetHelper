@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Configure the file paths you want to associate to your app -->
+    <files-path name="share_sample" path="BottomSheet/"/>
+</paths>
