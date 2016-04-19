@@ -1,4 +1,4 @@
-# BottomSheetSample
+# BottomSheetHelper
 Bottom Sheet Sample application for the bottomsheethelper library which gives a simple interface for defining a bottom sheet in Android
 
 Library use:
@@ -15,7 +15,7 @@ Add to your root build.gradle
 and add to your app build.gradle
 	
 	dependencies {
-		compile 'com.github.kylejablonski:BottomSheetSample:1.0.0'
+		compile 'com.github.kylejablonski:BottomSheetHelper:1.0.0'
 	}
 	
 Setup:
