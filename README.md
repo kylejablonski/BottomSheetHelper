@@ -15,7 +15,7 @@ Add to your root build.gradle
 and add to your app build.gradle
 	
 	dependencies {
-		compile 'com.github.User:Repo:Tag'
+		compile 'com.github.kylejablonski:BottomSheetSample:1.0.0'
 	}
 	
 Setup:
