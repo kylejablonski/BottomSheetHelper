@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">BottomSheetSample</string>
-
+    <string name="app_name">Bottom Sheet Sample</string>
     <string name="share">Share</string>
-
     <string name="share_image">Share by selecting the icon </string>
 </resources>
