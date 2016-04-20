@@ -1,6 +1,8 @@
 # BottomSheetHelper
 Bottom Sheet Sample application for the bottomsheethelper library which gives a simple interface for defining a bottom sheet in Android
 
+[![Release](https://jitpack.io/v/kylejablonski/BottomSheetHelper.svg)](https://jitpack.io/#kylejablonski/BottomSheetHelper)
+
 Library use:
 
 Add to your root build.gradle
@@ -90,7 +92,6 @@ Sample source from the MainActivity in the app/
 
 This Library will handle permission related to `android.permission.READ_EXTERNAL_STORAGE`, including runtime cases for Android 6.0 (API level 23).
 
-[![Release](https://jitpack.io/v/kylejablonski/BottomSheetHelper.svg)](https://jitpack.io/#kylejablonski/BottomSheetHelper)
 
 Caveats:
 * Limit use at the moment to image sharing in the first release
