@@ -90,7 +90,7 @@ Sample source from the MainActivity in the app/
 
 This Library will handle permission related to `android.permission.READ_EXTERNAL_STORAGE`, including runtime cases for Android 6.0 (API level 23).
 
-[![Release](https://jitpack.io/v/User/Repo.svg)](https://jitpack.io/#kylejablonski/BottomSheetHelper)
+[![Release](https://jitpack.io/v/kylejablonski/BottomSheetHelper.svg)](https://jitpack.io/#kylejablonski/BottomSheetHelper)
 
 Caveats:
 * Limit use at the moment to image sharing in the first release
