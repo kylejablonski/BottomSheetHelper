@@ -1,6 +1,10 @@
-# BottomSheetSample
+# BottomSheetHelper
 Bottom Sheet Sample application for the bottomsheethelper library which gives a simple interface for defining a bottom sheet in Android
 
+[![Release](https://jitpack.io/v/kylejablonski/BottomSheetHelper.svg)](https://jitpack.io/#kylejablonski/BottomSheetHelper)
+
+<img src="https://github.com/kylejablonski/BarcodeAgent/blob/master/art/home.png" style="display:inline-block" width="360" height="640"/>
+<img src="https://github.com/kylejablonski/BarcodeAgent/blob/master/art/home_2.png" style="display:inline-block" width="360" height="640"/>
 Library use:
 
 Add to your root build.gradle
@@ -15,7 +19,7 @@ Add to your root build.gradle
 and add to your app build.gradle
 	
 	dependencies {
-		compile 'com.github.User:Repo:Tag'
+		compile 'com.github.kylejablonski:BottomSheetHelper:1.0.0'
 	}
 	
 Setup:
@@ -88,7 +92,8 @@ Sample source from the MainActivity in the app/
         setSheetHelper(mSheetHelper);
 ```
 
-This Library will handle permission related to `android.permission.READ_EXTERNAL_STORAGE`, including runtime cases for Android 6.0 (API level 23)..
+This Library will handle permission related to `android.permission.READ_EXTERNAL_STORAGE`, including runtime cases for Android 6.0 (API level 23).
+
 
 Caveats:
 * Limit use at the moment to image sharing in the first release
