@@ -3,8 +3,8 @@ Bottom Sheet Sample application for the bottomsheethelper library which gives a 
 
 [![Release](https://jitpack.io/v/kylejablonski/BottomSheetHelper.svg)](https://jitpack.io/#kylejablonski/BottomSheetHelper)
 
-<img src="https://github.com/kylejablonski/BottomSheetHelper/blob/master/art/home.png" style="display:inline-block" width="360" height="640"/>
-<img src="https://github.com/kylejablonski/BottomSheetHelper/blob/master/art/home_2.png" style="display:inline-block" width="360" height="640"/>
+<img src="https://github.com/kylejablonski/BottomSheetHelper/blob/master/app/art/home.png" style="display:inline-block" width="360" height="640"/>
+<img src="https://github.com/kylejablonski/BottomSheetHelper/blob/master/app/art/home_2.png" style="display:inline-block" width="360" height="640"/>
 Library use:
 
 Add to your root build.gradle
