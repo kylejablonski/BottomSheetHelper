@@ -9,8 +9,8 @@ Get the Sample app:
 
 Screenshots:
 
-<img src="https://github.com/kylejablonski/BottomSheetHelper/blob/master/app/art/home.png" style="display:inline-block" width="360" height="640"/>
-<img src="https://github.com/kylejablonski/BottomSheetHelper/blob/master/app/art/home_2.png" style="display:inline-block" width="360" height="640"/>
+<img src="https://github.com/kylejablonski/BottomSheetHelper/blob/master/art/home.png" style="display:inline-block" width="360" height="640"/>
+<img src="https://github.com/kylejablonski/BottomSheetHelper/blob/master/art/home_2.png" style="display:inline-block" width="360" height="640"/>
 Library use:
 
 Add to your root build.gradle
