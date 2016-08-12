@@ -205,6 +205,7 @@ public abstract class ShareActivity extends AppCompatActivity implements BottomS
         mRvBottomSheet.setAdapter(mSheetHelper.getAdapter());
 
         behavior.setBottomSheetCallback(sheetHelper.getBottomSheetCallback());
+        behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
 
     /**
