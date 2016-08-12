@@ -1,6 +1,8 @@
 package com.divshark.bottomsheethelper;
 
 import android.Manifest;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -10,9 +12,11 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -34,6 +38,16 @@ public abstract class ShareActivity extends AppCompatActivity implements BottomS
 
     // using a large value here to not conflict with other Requests
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 7002;
+
+    /**
+     * Title AppCompatTextView for the Bottom Sheet
+     */
+    private AppCompatTextView mBsTitle;
+
+    /**
+     * Shadow View for the bottom of the title, shows on scroll
+     */
+    private View mFlShadow;
 
     /**
      * RecyclerView for showing Applications to share to
@@ -62,6 +76,11 @@ public abstract class ShareActivity extends AppCompatActivity implements BottomS
     private SheetHelper mSheetHelper;
 
     /**
+     * GridLayoutManager for the RecyclerView
+     */
+    private GridLayoutManager mGridLayoutManager;
+
+    /**
      * Implementations will need this method to create the file they need to share
      * @return - the Uri pointing to the file we want to share
      */
@@ -81,14 +100,36 @@ public abstract class ShareActivity extends AppCompatActivity implements BottomS
 
         View view = getLayoutInflater().inflate(R.layout.share_activity, null);
         FrameLayout content = (FrameLayout) view.findViewById(R.id.content);
-
+        mBsTitle = (AppCompatTextView) view.findViewById(R.id.tv_bottom_sheet_title);
         mRlBottomSheet  = (RelativeLayout) view.findViewById(R.id.rl_bottom_sheet);
         mRvBottomSheet = (RecyclerView) view.findViewById(R.id.rv_bottom_sheet);
+        mFlShadow = view.findViewById(R.id.fl_shadow);
         behavior = BottomSheetBehavior.from(mRlBottomSheet);
+        mRvBottomSheet.setOnScrollListener(ScrollChangeListener);
 
         getLayoutInflater().inflate(layoutResID, content, true);
 
         super.setContentView(view);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId() == android.R.id.home && behavior.getState() != BottomSheetBehavior.STATE_HIDDEN){
+            behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+            return true;
+        }else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(behavior.getState() != BottomSheetBehavior.STATE_HIDDEN){
+            behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        }else{
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -153,13 +194,15 @@ public abstract class ShareActivity extends AppCompatActivity implements BottomS
             throw new IllegalArgumentException("The ShareSheet helper cannot be null");
         }
 
-
         this.mSheetHelper = sheetHelper;
 
+        mRlBottomSheet.setBackgroundColor(mSheetHelper.getBackgroundColor());
+        mBsTitle.setTextColor(mSheetHelper.getTitleColor());
+
         // sets up the layout manager using the Sheet Helper
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, sheetHelper.getColumnCount());
-        mRvBottomSheet.setLayoutManager(gridLayoutManager);
-        mRvBottomSheet.setAdapter(sheetHelper.getAdapter());
+        mGridLayoutManager = new GridLayoutManager(this, mSheetHelper.getColumnCount());
+        mRvBottomSheet.setLayoutManager(mGridLayoutManager);
+        mRvBottomSheet.setAdapter(mSheetHelper.getAdapter());
 
         behavior.setBottomSheetCallback(sheetHelper.getBottomSheetCallback());
     }
@@ -270,4 +313,25 @@ public abstract class ShareActivity extends AppCompatActivity implements BottomS
                     }
                 }).build().show();
     }
+
+    private final RecyclerView.OnScrollListener ScrollChangeListener = new RecyclerView.OnScrollListener() {
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            super.onScrolled(recyclerView, dx, dy);
+            if(dy > 0 && mFlShadow.getVisibility() == View.INVISIBLE){
+                mFlShadow.setAlpha(0f);
+                mFlShadow.setVisibility(View.VISIBLE);
+                mFlShadow.animate().setDuration(100L).alpha(1f).setListener(null);
+
+            }else if(mGridLayoutManager.findFirstVisibleItemPosition() == 0){
+                mFlShadow.animate().setDuration(100L).alpha(0f).setListener(
+                        new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                mFlShadow.setVisibility(View.INVISIBLE);
+                            }
+                        });
+            }
+        }
+    };
 }

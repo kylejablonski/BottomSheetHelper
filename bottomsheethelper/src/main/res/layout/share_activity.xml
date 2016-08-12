@@ -17,19 +17,25 @@
         app:layout_behavior="@string/bottom_sheet_behavior"
         app:behavior_peekHeight="352dp"
         app:behavior_hideable="true"
-        android:background="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="bottom">
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv_bottom_sheet_title"
-            android:textColor="@color/secondary_black"
             android:padding="16dp"
             android:text="@string/share_to"
             android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <View
+            android:id="@+id/fl_shadow"
+            android:layout_below="@+id/tv_bottom_sheet_title"
+            android:visibility="invisible"
+            android:background="@drawable/sheet_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_bottom_sheet"

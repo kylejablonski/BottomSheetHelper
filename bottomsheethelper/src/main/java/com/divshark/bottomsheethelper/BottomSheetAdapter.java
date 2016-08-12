@@ -24,6 +24,7 @@ public class BottomSheetAdapter  extends RecyclerView.Adapter<BottomSheetAdapter
     private Context mContext;
     private List<BottomSheetItem> mBottomSheetItems;
     private Callback mCallback;
+    private int mItemTextColor;
 
     public interface Callback{
 
@@ -35,6 +36,10 @@ public class BottomSheetAdapter  extends RecyclerView.Adapter<BottomSheetAdapter
         this.mBottomSheetItems = bottomSheetItems;
 
         mCallback = (Callback) mContext;
+    }
+
+    public void setItemTextColor(int itemTextColor){
+        mItemTextColor = itemTextColor;
     }
 
     @Override
@@ -63,6 +68,7 @@ public class BottomSheetAdapter  extends RecyclerView.Adapter<BottomSheetAdapter
 
             holder.imageView.setImageDrawable(bottomSheetItem.drawable);
             holder.textView.setText(bottomSheetItem.title);
+            holder.textView.setTextColor(mItemTextColor);
 
             holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override

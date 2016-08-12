@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.AsyncTask;
+import android.support.annotation.ColorInt;
 import android.support.design.widget.BottomSheetBehavior;
 import android.util.Log;
 
@@ -103,6 +104,21 @@ public class SheetHelper {
     private String title;
 
     /**
+     * int color for the Sheet title
+     */
+    private int titleColor;
+
+    /**
+     * int color for the sheet item text
+     */
+    private int itemTextColor;
+
+    /**
+     * int color for the sheet background
+     */
+    private int backgroundColor;
+
+    /**
      * AsyncTask for getting applications for the {@link #action} for the Intent
      */
     private ResolveInfoTask mResolveInfoTask;
@@ -127,10 +143,14 @@ public class SheetHelper {
         mimeType = builder.mimeType;
         subject = builder.subject;
         title = builder.title;
+        titleColor = builder.titleColor;
+        itemTextColor = builder.itemTextColor;
+        backgroundColor = builder.backgroundColor;
 
         // We create the BottomSheetItem List and adapter separately from the Builder
         bottomSheetItems = new ArrayList<>();
         adapter = new BottomSheetAdapter(context, bottomSheetItems);
+        adapter.setItemTextColor(itemTextColor);
 
         // initialize the sheet
         initBottomSheet();
@@ -202,6 +222,12 @@ public class SheetHelper {
         return title;
     }
 
+    public int getTitleColor(){ return titleColor;}
+
+    public int getItemTextColor(){return itemTextColor;}
+
+    public int getBackgroundColor(){return backgroundColor;}
+
     /**
      * Builder class for the SheetHelper
      */
@@ -220,6 +246,9 @@ public class SheetHelper {
         private String mimeType;
         private String subject;
         private String title;
+        private int titleColor = R.color.primary_black;
+        private int itemTextColor =  R.color.secondary_black;
+        private int backgroundColor = R.color.white;
 
         public Builder with(Context context){
             this.context = context;
@@ -284,6 +313,21 @@ public class SheetHelper {
 
         public Builder title(String title){
             this.title = title;
+            return this;
+        }
+
+        public Builder titleColor(@ColorInt int titleColor){
+            this.titleColor = titleColor;
+            return this;
+        }
+
+        public Builder itemTextColor(@ColorInt int itemTextColor){
+            this.itemTextColor = itemTextColor;
+            return this;
+        }
+
+        public Builder backgroundColor(@ColorInt int backgroundColor){
+            this.backgroundColor = backgroundColor;
             return this;
         }
 
