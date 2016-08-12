@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.AsyncTask;
-import android.support.annotation.ColorInt;
 import android.support.design.widget.BottomSheetBehavior;
 import android.util.Log;
 
@@ -143,9 +142,9 @@ public class SheetHelper {
         mimeType = builder.mimeType;
         subject = builder.subject;
         title = builder.title;
-        titleColor = builder.titleColor;
-        itemTextColor = builder.itemTextColor;
-        backgroundColor = builder.backgroundColor;
+        titleColor = builder.titleColor != 0 ? builder.titleColor : context.getResources().getColor(R.color.primary_black) ;
+        itemTextColor = builder.itemTextColor != 0 ? builder.itemTextColor : context.getResources().getColor(R.color.secondary_black);
+        backgroundColor = builder.backgroundColor!= 0 ? builder.backgroundColor : context.getResources().getColor(R.color.white);
 
         // We create the BottomSheetItem List and adapter separately from the Builder
         bottomSheetItems = new ArrayList<>();
@@ -246,9 +245,9 @@ public class SheetHelper {
         private String mimeType;
         private String subject;
         private String title;
-        private int titleColor = R.color.primary_black;
-        private int itemTextColor =  R.color.secondary_black;
-        private int backgroundColor = R.color.white;
+        private int titleColor;
+        private int itemTextColor;
+        private int backgroundColor;
 
         public Builder with(Context context){
             this.context = context;
@@ -316,17 +315,17 @@ public class SheetHelper {
             return this;
         }
 
-        public Builder titleColor(@ColorInt int titleColor){
+        public Builder titleColor(int titleColor){
             this.titleColor = titleColor;
             return this;
         }
 
-        public Builder itemTextColor(@ColorInt int itemTextColor){
+        public Builder itemTextColor(int itemTextColor){
             this.itemTextColor = itemTextColor;
             return this;
         }
 
-        public Builder backgroundColor(@ColorInt int backgroundColor){
+        public Builder backgroundColor(int backgroundColor){
             this.backgroundColor = backgroundColor;
             return this;
         }
