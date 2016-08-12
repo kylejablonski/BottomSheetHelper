@@ -45,9 +45,6 @@ public class MainActivity extends ShareActivity {
                 .action(Intent.ACTION_SEND) /* Specify and Intent Action */
                 .filePrefix("Image") /* configure a file prefix */
                 .provider(".sampleprovider") /* configure the file provider name */
-                .backgroundColor(getResources().getColor(R.color.black))
-                .titleColor(getResources().getColor(R.color.white))
-                .itemTextColor(getResources().getColor(R.color.white))
                 .fileExtension(".png") /* configure the file extension */
                 .columnCount(2) /* configure the column count for the grid adapter */
                 .callback(ShareSheetBehaviorCallback) /* specify a BottomSheetBehavior.BottomSheetCallback */
